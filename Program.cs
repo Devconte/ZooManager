@@ -51,3 +51,19 @@ public class Enclosure
         Animals.Add(animal);
     }
 }
+
+public class Zoo
+{
+    public List<Animal> Animals { get; set; } = new List<Animal>();
+    public Dictionary<string, Enclosure> Enclosures { get; set; } = new Dictionary<string, Enclosure>();>
+}
+
+public interface ICarnivore
+{
+    void Hunt();
+}
+
+public interface IHerbivore
+{
+    void Graze();
+}
