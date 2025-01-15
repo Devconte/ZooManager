@@ -14,12 +14,28 @@ class Program
         Enclosure oceania  = new Enclosure { Name = "Oceania" };
         Enclosure hSavannah = new Enclosure { Name = "hSavannah" };
         
+        // adding enclosure name to the dictionnary "key" = value
         myZoo.Enclosures["cSavannah"] = cSavannah;
         myZoo.Enclosures["oceania"] = oceania;
         myZoo.Enclosures["hSavannah"] = hSavannah;
         
+        // adding the max capacity alert to the savannah enclosure.
+        cSavannah.Alert += message => Console.WriteLine(message);
+        
         cSavannah.AddAnimal(lion);
         oceania.AddAnimal(kangaroo);
         hSavannah.AddAnimal(elephant);
+        
+        for (int i = 0; i < 10; i++)
+        {
+            myZoo.AddVisitor($"Visitor {i + 1}");
+         
+        }
+        
+        // LINQ
+        
+        
+
+        
     }
 }
