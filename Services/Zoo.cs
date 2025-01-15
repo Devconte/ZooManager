@@ -1,3 +1,5 @@
+using ZooManager.Interfaces;
+
 namespace ZooManager.Services;
 using ZooManager.Models;
 
@@ -12,5 +14,15 @@ public class Zoo
     public void AddVisitor(string visitor)
     {
         VisitorsQueue.Enqueue(visitor);
+    }
+
+    public IEnumerable<Animal> GetHeavyAnimals(double weight)
+    {
+        return Animals.Where(a => a.Weight > weight);
+    }
+
+    public int CountCarnivores()
+    {
+        return Animals.OfType<IHerbivore>().Count();
     }
 }
