@@ -6,9 +6,15 @@ class Program
     {
         Zoo myZoo = new Zoo();
         
-        var lion = new Lion("Simba", 180);
-        var elephant = new Elephant("Dumbo", 180);
+        var lion = new Lion("Simba", 360);
+        var elephant = new Elephant("Dumbo", 1800);
         var kangaroo = new Kangaroo("Roger", 180);
+        
+        
+        myZoo.Animals.Add(lion);
+        myZoo.Animals.Add(elephant);
+        myZoo.Animals.Add(kangaroo);
+        
         
         Enclosure cSavannah = new Enclosure { Name = "cSavannah" };
         Enclosure oceania  = new Enclosure { Name = "Oceania" };
@@ -31,11 +37,23 @@ class Program
             myZoo.AddVisitor($"Visitor {i + 1}");
          
         }
-        
+        foreach (var animal in myZoo.Animals)
+        {
+            Console.WriteLine($"Nom: {animal.Name}, Poids: {animal.Weight}");
+        }
         // LINQ
-        
-        
 
+        var heavyAnimals = myZoo.GetHeavyAnimals(50);
+        Console.WriteLine("Animals weighting more than 50 kg :");
+        foreach (var animal in heavyAnimals)
+        {
+            Console.WriteLine($"- {animal.Name}, Weight: {animal.Weight} kg");
+        }
         
+        int carnivoreCount = myZoo.CountCarnivores();
+        Console.WriteLine($"There is {carnivoreCount} carnivores in the zoo.");
+
+
+
     }
 }

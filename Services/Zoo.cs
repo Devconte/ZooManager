@@ -16,13 +16,14 @@ public class Zoo
         VisitorsQueue.Enqueue(visitor);
     }
 
-    public IEnumerable<Animal> GetHeavyAnimals(double weight)
+    public List<Animal> GetHeavyAnimals(double weight)
     {
-        return Animals.Where(a => a.Weight > weight);
+        // needs to be a list to be usable; inumerable not working
+        return Animals.Where(a => a.Weight > weight).ToList();
     }
 
     public int CountCarnivores()
     {
-        return Animals.OfType<IHerbivore>().Count();
+        return Animals.OfType<ICarnivore>().Count();
     }
 }
